@@ -1,3 +1,3 @@
-import { getImage } from './data.js';
+import { createThumbnails } from './thumbnails';
 
-getImage();
+createThumbnails();

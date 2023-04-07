@@ -1,9 +1,17 @@
-import { getRandomElement, idGenerator, randomNumber } from './util.js';
+import {getRandomElement, idGenerator, randomNumber} from './util.js';
 
 const NUMBER_IMAGES = 25;
-const NUMBER_COMMENTS = 1;
+const NUMBER_COMMENTS = {
+  MIN: 0,
+  MAX: 3
+};
 const NUMBER_AVATARS = 6;
-const NUMBER_LIKES = {MIN: 15, MAX: 200};
+const NUMBER_LIKES = {
+  MIN: 15,
+  MAX: 200
+};
+const NUMBER_MESSAGES = 25;
+
 
 const NAMES = [
   'Илья',
@@ -45,14 +53,19 @@ const createComment = () => ({
   names: getRandomElement(NAMES),
 });
 
-const createImage = () => ({
-  id: generateID,
-  url: `photos/${generateID}.jpg`,
+const createImage = (index) => ({
+  id: index,
+  url: `photos/${index}.jpg`,
   description: getRandomElement(DESCRIPTIONS),
   likes: randomNumber(NUMBER_LIKES.MIN, NUMBER_LIKES.MAX),
-  comments: Array.from({length: NUMBER_COMMENTS}, createComment),
+  comments: Array.from({length: idGenerator(NUMBER_COMMENTS.MIN, NUMBER_COMMENTS.MAX)}, createComment),
 });
 
-const getImage = () => Array.from({length: NUMBER_IMAGES}, createImage);
+const getImage = () => Array.from(
+  {length: NUMBER_IMAGES},
+  (_, photoIndex) =>
+    createImage(photoIndex + 1));
 
-export { getImage };
+export {getImage};
+
+
