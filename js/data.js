@@ -1,4 +1,4 @@
-import {getRandomElement, idGenerator, randomNumber} from './util.js';
+import { getRandomElement, idGenerator, randomNumber } from './util.js';
 
 const NUMBER_IMAGES = 25;
 const NUMBER_COMMENTS = {
@@ -10,8 +10,6 @@ const NUMBER_LIKES = {
   MIN: 15,
   MAX: 200
 };
-const NUMBER_MESSAGES = 25;
-
 
 const NAMES = [
   'Илья',
