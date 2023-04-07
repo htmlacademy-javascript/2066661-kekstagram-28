@@ -1,8 +1,8 @@
 import { getImage } from './data';
+import { thumbnailsList } from './gallery.js';
 
 const createThumbnails = () => {
   const fragment = document.createDocumentFragment();
-  const thumbnailsList = document.querySelector('.pictures');
   const template = document.querySelector('#picture').content;
   const imageList = getImage();
 
@@ -12,11 +12,13 @@ const createThumbnails = () => {
     sketch.querySelector('.picture__img').alt = photo.description;
     sketch.querySelector('.picture__comments').textContent = photo.comments.length;
     sketch.querySelector('.picture__likes').textContent = photo.likes;
+    sketch.querySelector('.picture').dataset.thumbnailId = photo.id;
 
     fragment.appendChild(sketch);
   });
 
   thumbnailsList.appendChild(fragment);
+  return imageList;
 };
 
 export { createThumbnails };
